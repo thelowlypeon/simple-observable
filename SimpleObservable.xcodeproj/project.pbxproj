@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		D02FA57921617E3900E59AE3 /* SimpleObservable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FA56F21617E3900E59AE3 /* SimpleObservable.framework */; };
-		D02FA57E21617E3900E59AE3 /* SimpleObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA57D21617E3900E59AE3 /* SimpleObservableTests.swift */; };
 		D02FA58021617E3900E59AE3 /* SimpleObservable.h in Headers */ = {isa = PBXBuildFile; fileRef = D02FA57221617E3900E59AE3 /* SimpleObservable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D02FA58A2161A8C200E59AE3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D02FA5892161A8C200E59AE3 /* README.md */; };
+		D02FA58D2161A92700E59AE3 /* ObservableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA58C2161A92700E59AE3 /* ObservableProperty.swift */; };
+		D02FA58F2161A9B100E59AE3 /* ObservablePropertyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA58E2161A9B100E59AE3 /* ObservablePropertyTest.swift */; };
+		D02FA5922161ABDF00E59AE3 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5912161ABDF00E59AE3 /* Observer.swift */; };
+		D02FA5962161AD0900E59AE3 /* RegisteringObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5952161AD0900E59AE3 /* RegisteringObserverTests.swift */; };
+		D02FA59821623E9400E59AE3 /* ObserverReferenceCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA59721623E9400E59AE3 /* ObserverReferenceCounterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +32,13 @@
 		D02FA57221617E3900E59AE3 /* SimpleObservable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleObservable.h; sourceTree = "<group>"; };
 		D02FA57321617E3900E59AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D02FA57821617E3900E59AE3 /* SimpleObservableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleObservableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D02FA57D21617E3900E59AE3 /* SimpleObservableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleObservableTests.swift; sourceTree = "<group>"; };
 		D02FA57F21617E3900E59AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D02FA5892161A8C200E59AE3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D02FA58C2161A92700E59AE3 /* ObservableProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableProperty.swift; sourceTree = "<group>"; };
+		D02FA58E2161A9B100E59AE3 /* ObservablePropertyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservablePropertyTest.swift; sourceTree = "<group>"; };
+		D02FA5912161ABDF00E59AE3 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		D02FA5952161AD0900E59AE3 /* RegisteringObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteringObserverTests.swift; sourceTree = "<group>"; };
+		D02FA59721623E9400E59AE3 /* ObserverReferenceCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverReferenceCounterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,8 @@
 		D02FA57121617E3900E59AE3 /* SimpleObservable */ = {
 			isa = PBXGroup;
 			children = (
+				D02FA5912161ABDF00E59AE3 /* Observer.swift */,
+				D02FA58C2161A92700E59AE3 /* ObservableProperty.swift */,
 				D02FA57221617E3900E59AE3 /* SimpleObservable.h */,
 				D02FA57321617E3900E59AE3 /* Info.plist */,
 			);
@@ -83,8 +93,10 @@
 		D02FA57C21617E3900E59AE3 /* SimpleObservableTests */ = {
 			isa = PBXGroup;
 			children = (
-				D02FA57D21617E3900E59AE3 /* SimpleObservableTests.swift */,
 				D02FA57F21617E3900E59AE3 /* Info.plist */,
+				D02FA58E2161A9B100E59AE3 /* ObservablePropertyTest.swift */,
+				D02FA5952161AD0900E59AE3 /* RegisteringObserverTests.swift */,
+				D02FA59721623E9400E59AE3 /* ObserverReferenceCounterTests.swift */,
 			);
 			path = SimpleObservableTests;
 			sourceTree = "<group>";
@@ -151,6 +163,7 @@
 				TargetAttributes = {
 					D02FA56E21617E3900E59AE3 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					D02FA57721617E3900E59AE3 = {
 						CreatedOnToolsVersion = 10.0;
@@ -198,6 +211,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02FA58D2161A92700E59AE3 /* ObservableProperty.swift in Sources */,
+				D02FA5922161ABDF00E59AE3 /* Observer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +220,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D02FA57E21617E3900E59AE3 /* SimpleObservableTests.swift in Sources */,
+				D02FA58F2161A9B100E59AE3 /* ObservablePropertyTest.swift in Sources */,
+				D02FA59821623E9400E59AE3 /* ObserverReferenceCounterTests.swift in Sources */,
+				D02FA5962161AD0900E59AE3 /* RegisteringObserverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +362,7 @@
 		D02FA58421617E3900E59AE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -363,6 +381,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.petercompernolle.SimpleObservable;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -371,6 +390,7 @@
 		D02FA58521617E3900E59AE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -397,6 +417,7 @@
 		D02FA58721617E3900E59AE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DSJ4U4S4SH;
 				INFOPLIST_FILE = SimpleObservableTests/Info.plist;
@@ -415,6 +436,7 @@
 		D02FA58821617E3900E59AE3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DSJ4U4S4SH;
 				INFOPLIST_FILE = SimpleObservableTests/Info.plist;
