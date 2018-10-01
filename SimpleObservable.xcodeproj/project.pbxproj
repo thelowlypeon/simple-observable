@@ -15,6 +15,7 @@
 		D02FA5922161ABDF00E59AE3 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5912161ABDF00E59AE3 /* Observer.swift */; };
 		D02FA5962161AD0900E59AE3 /* RegisteringObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5952161AD0900E59AE3 /* RegisteringObserverTests.swift */; };
 		D02FA59821623E9400E59AE3 /* ObserverReferenceCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA59721623E9400E59AE3 /* ObserverReferenceCounterTests.swift */; };
+		D02FA59C2162441300E59AE3 /* ObserverCallbacksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA59B2162441300E59AE3 /* ObserverCallbacksTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		D02FA5912161ABDF00E59AE3 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		D02FA5952161AD0900E59AE3 /* RegisteringObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteringObserverTests.swift; sourceTree = "<group>"; };
 		D02FA59721623E9400E59AE3 /* ObserverReferenceCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverReferenceCounterTests.swift; sourceTree = "<group>"; };
+		D02FA59B2162441300E59AE3 /* ObserverCallbacksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverCallbacksTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				D02FA58E2161A9B100E59AE3 /* ObservablePropertyTest.swift */,
 				D02FA5952161AD0900E59AE3 /* RegisteringObserverTests.swift */,
 				D02FA59721623E9400E59AE3 /* ObserverReferenceCounterTests.swift */,
+				D02FA59B2162441300E59AE3 /* ObserverCallbacksTests.swift */,
 			);
 			path = SimpleObservableTests;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				D02FA58F2161A9B100E59AE3 /* ObservablePropertyTest.swift in Sources */,
 				D02FA59821623E9400E59AE3 /* ObserverReferenceCounterTests.swift in Sources */,
+				D02FA59C2162441300E59AE3 /* ObserverCallbacksTests.swift in Sources */,
 				D02FA5962161AD0900E59AE3 /* RegisteringObserverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
