@@ -11,6 +11,7 @@ import XCTest
 
 class ObservablePropertyTest: XCTestCase {
     var initialValue = "initial string"
+    let newValue = "new value"
     var observableString: ObservableProperty<String>!
     var observableOptionalString: ObservableProperty<String?>!
 
@@ -23,7 +24,6 @@ class ObservablePropertyTest: XCTestCase {
     }
 
     func testMutatingValue() {
-        let newValue = "new value"
         observableString.value = newValue
         XCTAssertEqual(observableString.value, newValue)
     }
@@ -31,5 +31,16 @@ class ObservablePropertyTest: XCTestCase {
     func testNilLiteralInitializer() {
         observableOptionalString = ObservableProperty<String?>()
         XCTAssertNil(observableOptionalString.value)
+    }
+
+    func testObserveReturnsObserverWithInitialValue() {
+        let observer = observableString.observe()
+        XCTAssertEqual(observer.currentValue, initialValue)
+    }
+
+    func testObserveReturnsRegisteredObserver() {
+        let observer = observableString.observe()
+        observableString.value = newValue
+        XCTAssertEqual(observer.currentValue, newValue)
     }
 }

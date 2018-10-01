@@ -27,9 +27,15 @@ public class Observer<T> {
         return self
     }
 
-    public func send(_ value: T) {
-        for callback in onNextCallbacks {
-            callback(value)
+    internal func shouldSend(_ newValue: T) -> Bool {
+        return true
+    }
+
+    internal func send(_ value: T) {
+        if shouldSend(value) {
+            for callback in onNextCallbacks {
+                callback(value)
+            }
         }
         currentValue = value
     }

@@ -24,6 +24,11 @@ public class ObservableProperty<T> {
 }
 
 extension ObservableProperty {
+    public func observe(_ onNext: PropertyChangedCallback<T>? = nil) -> Observer<T> {
+        let observer = Observer<T>(initialValue: value)
+        return register(observer: observer)
+    }
+
     public func register(observer: Observer<T>) -> Observer<T> {
         observers[observer.identifier] = observer
         return observer
@@ -41,5 +46,12 @@ extension ObservableProperty {
 extension ObservableProperty where T: ExpressibleByNilLiteral {
     public convenience init() {
         self.init(nil)
+    }
+}
+
+extension ObservableProperty where T: Equatable {
+    public func distinct(_ onNext: PropertyChangedCallback<T>? = nil) -> Observer<T> {
+        let observer = DistinctValueObserver<T>(initialValue: value)
+        return register(observer: observer)
     }
 }
