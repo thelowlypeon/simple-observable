@@ -16,10 +16,10 @@ class RegisteringObserverTests: XCTestCase {
         return ObservableProperty<String>(initialValue)
     }()
     lazy var observer1: Observer<String> = {
-        return Observer<String>(initialValue: initialValue)
+        return Observer<String>(observableProperty, initialValue: initialValue)
     }()
     lazy var observer2: Observer<String> = {
-        return Observer<String>(initialValue: initialValue)
+        return Observer<String>(observableProperty, initialValue: initialValue)
     }()
 
     func testRegisteringMultipleObservers() {

@@ -22,11 +22,13 @@ class ObserverWithMockedFilters<T>: Observer<T> {
 class ObserverFiltersTests: XCTestCase {
     let initialValue = "initial value"
     let newValue = "new value"
+    var observableProperty: ObservableProperty<String>!
     var observer: ObserverWithMockedFilters<String>!
     var filter: PropertyChangedFilterClosure<String>!
 
     override func setUp() {
-        observer = ObserverWithMockedFilters<String>(initialValue: initialValue)
+        observableProperty = ObservableProperty<String>(initialValue)
+        observer = ObserverWithMockedFilters<String>(observableProperty, initialValue: initialValue)
     }
 
     func testFilterAllowsValue() {

@@ -25,7 +25,7 @@ public class ObservableProperty<T> {
 
 extension ObservableProperty {
     public func observe(_ onNext: PropertyChangedCallback<T>? = nil) -> Observer<T> {
-        let observer = Observer<T>(initialValue: value)
+        let observer = Observer<T>(self, initialValue: value)
         return register(observer: observer)
     }
 

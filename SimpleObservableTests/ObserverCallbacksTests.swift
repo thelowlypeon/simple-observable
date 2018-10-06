@@ -12,10 +12,12 @@ import XCTest
 class ObserverCallbacksTests: XCTestCase {
     let initialValue = "initial value"
     let newValue = "new value"
+    var observableProperty: ObservableProperty<String>!
     var observer: Observer<String>!
 
     override func setUp() {
-        observer = Observer<String>(initialValue: initialValue)
+        observableProperty = ObservableProperty<String>(initialValue)
+        observer = observableProperty.observe()
     }
 
     func testCallbackIsCalledWithInitialValue() {

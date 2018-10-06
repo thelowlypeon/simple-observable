@@ -13,12 +13,13 @@ public typealias PropertyChangedCallback<T> = ((T) -> Void)
 
 public class Observer<T> {
     public let identifier = PropertyObserverIdentifier()
-
+    private weak var property: ObservableProperty<T>?
     private(set) var currentValue: T
     private var onNextCallbacks = [PropertyChangedCallback<T>]()
     private var filters = [PropertyChangedFilter<T>]()
 
-    public init(initialValue: T) {
+    public init(_ property: ObservableProperty<T>, initialValue: T) {
+        self.property = property
         self.currentValue = initialValue
     }
 
@@ -43,6 +44,15 @@ public class Observer<T> {
         return filters.allSatisfy({(filter) in
             filter.perform(newValue, oldValue: self.currentValue, firstPass: firstPass)
         })
+    }
+
+    public func end() {
+        property?.stopObserving(identifier)
+    }
+
+    deinit {
+        print("de-initting \(identifier)")
+        end()
     }
 }
 

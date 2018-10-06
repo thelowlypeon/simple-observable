@@ -13,9 +13,11 @@ class DistinctValueObserverTests: XCTestCase {
     let initialValue = "initial value"
     let newValue = "new value"
     var observer: Observer<String>!
+    var observableProperty: ObservableProperty<String>!
 
     override func setUp() {
-        observer = Observer<String>(initialValue: initialValue).distinct()
+        observableProperty = ObservableProperty<String>(initialValue)
+        observer = observableProperty.observe().distinct()
     }
 
     func testObserverSendsOnlyDistinctValues() {

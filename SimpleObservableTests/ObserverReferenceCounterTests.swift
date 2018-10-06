@@ -25,8 +25,8 @@ class ObserverReferenceCounterTests: XCTestCase {
     var observer: ObserverWithTestableDeinit<String>?
 
     override func setUp() {
-        observer = ObserverWithTestableDeinit<String>(initialValue: initialValue)
         observableProperty = ObservableWithTestableDeinit<String>(initialValue)
+        observer = ObserverWithTestableDeinit<String>(observableProperty!, initialValue: initialValue)
     }
 
     func testNoReferenceIsHeldWhenObserverIsRemoved() {
