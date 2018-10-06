@@ -16,6 +16,7 @@ public class Observer<T> {
 
     private(set) var currentValue: T
     private var onNextCallbacks = [PropertyChangedCallback<T>]()
+    private var filters = [PropertyChangedFilter<T>]()
 
     public init(initialValue: T) {
         self.currentValue = initialValue
@@ -23,20 +24,49 @@ public class Observer<T> {
 
     public func onNext(_ callback: @escaping PropertyChangedCallback<T>) -> Self {
         onNextCallbacks.append(callback)
-        callback(currentValue)
+        if passesFilters(currentValue, firstPass: true) {
+            callback(currentValue)
+        }
         return self
     }
 
-    internal func shouldSend(_ newValue: T) -> Bool {
-        return true
-    }
-
     internal func send(_ value: T) {
-        if shouldSend(value) {
+        if passesFilters(value) {
             for callback in onNextCallbacks {
                 callback(value)
             }
         }
         currentValue = value
+    }
+
+    internal func passesFilters(_ newValue: T, firstPass: Bool = false) -> Bool {
+        return filters.allSatisfy({(filter) in
+            filter.perform(newValue, oldValue: self.currentValue, firstPass: firstPass)
+        })
+    }
+}
+
+extension Observer {
+    public func addFilter(_ filter: PropertyChangedFilter<T>) -> Self {
+        self.filters.append(filter)
+        return self
+    }
+
+    public func filter(withOldValue oldValueFilterClosure: @escaping PropertyChangedFromFilterClosure<T>) -> Self {
+        return self.addFilter(PropertyChangedFilter(oldValueFilterClosure))
+    }
+
+    public func filter(_ filterClosure: @escaping PropertyChangedFilterClosure<T>) -> Self {
+        return self.addFilter(PropertyChangedFilter(ignoringOldValue: filterClosure))
+    }
+}
+
+extension Observer where T: Equatable {
+    public func distinct() -> Observer<T> {
+        return self.addFilter(
+            PropertyChangedFilter({(newValue, oldValue) in
+                return newValue != oldValue
+            }, ignoreOnFirstPass: true)
+        )
     }
 }

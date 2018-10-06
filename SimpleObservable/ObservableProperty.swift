@@ -48,10 +48,3 @@ extension ObservableProperty where T: ExpressibleByNilLiteral {
         self.init(nil)
     }
 }
-
-extension ObservableProperty where T: Equatable {
-    public func distinct(_ onNext: PropertyChangedCallback<T>? = nil) -> Observer<T> {
-        let observer = DistinctValueObserver<T>(initialValue: value)
-        return register(observer: observer)
-    }
-}

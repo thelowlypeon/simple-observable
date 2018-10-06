@@ -12,57 +12,26 @@ import XCTest
 class DistinctValueObserverTests: XCTestCase {
     let initialValue = "initial value"
     let newValue = "new value"
-    var property: ObservableProperty<String>!
+    var observer: Observer<String>!
 
     override func setUp() {
-        property = ObservableProperty<String>(initialValue)
+        observer = Observer<String>(initialValue: initialValue).distinct()
     }
 
-    func testObserveDistinctValueReturnsDistinctValueObserver() {
-        let observer = property.distinct()
-        XCTAssert(observer is DistinctValueObserver)
-    }
-
-    func testObserveReturnsObserverWithInitialValue() {
-        let observer = property.distinct()
-        XCTAssertEqual(observer.currentValue, initialValue)
-    }
-
-    func testObserveReturnsRegisteredObserver() {
-        let observer = property.distinct()
-        property.value = newValue
-        XCTAssertEqual(observer.currentValue, newValue)
-    }
-
-    func testDistinctObserverShouldNotSendEqualValues() {
-        let observer = property.distinct()
-        let shouldSend = observer.shouldSend(initialValue)
-        XCTAssertFalse(shouldSend)
-    }
-
-    func testDistinctObserverShouldSendDistinctValues() {
-        let observer = property.distinct()
-        let shouldSend = observer.shouldSend(newValue)
-        XCTAssert(shouldSend)
-    }
-
-    func testMultipleAssignmentsOfSameValueAreIgnored() {
-        let observer = property.distinct()
-        var initialValuePassed = false
-        let exp = expectation(description: "new value was sent")
+    func testObserverSendsOnlyDistinctValues() {
+        let newValueExpectation = expectation(description: "received new value")
+        var receivedInitialValue = false
         let _ = observer.onNext({(value) in
             if value == self.initialValue {
-                if initialValuePassed {
-                    XCTFail("initial value was passed multiple times")
+                if receivedInitialValue {
                 }
-                initialValuePassed = true
-            } else if value == self.newValue {
-                exp.fulfill()
+                receivedInitialValue = true
+            } else {
+                newValueExpectation.fulfill()
             }
         })
-        property.value = initialValue
-        property.value = initialValue
-        property.value = newValue
+        observer.send(initialValue)
+        observer.send(newValue)
         waitForExpectations(timeout: 1)
     }
 }

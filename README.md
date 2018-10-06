@@ -56,10 +56,11 @@ For example, if we wanted our callback to execute only on distinct values
 that aren't nil, we can add an observer on the above class that looks like:
 
 ```swift
-let observer = myClass.observableOptionalString.distinct()
+let observer = myClass.observableOptionalString.observe()
+    .distinct()
     .filter { $0 != nil }
 
-observer.onNext { print("here's a non-nil value! \($0!) }
+observer.onNext { print("here's a unique non-nil value! \($0!) }
 ```
 
 NOTE: Receiving callbacks on distinct values requires the generic type
@@ -81,6 +82,29 @@ myClass.observableString.observe().filter({(newValue) -> Bool in
   return newValue == "test"
 })
 ```
+
+#### `filter(withOldValue:)`
+
+Like `filter()`, except this will pass the old _and_ new values to your filter:
+
+```swift
+myClass.observableString.observe().filter(withOldValue: {(oldValue, newValue) -> Bool in
+  return oldValue == nil && (newValue != nil && newValue! > 0)
+})
+```
+
+#### `addFilter()`
+
+You can optionally declare your own filters. This is particularly useful if you want to reuse them or
+specify whether to ignore your filter on the initial value.
+
+```swift
+let filter = PropertyChangeFilter<String>({ $0 != $1 }, ignoreOnFirstPass: true)
+myClass.observableString.observe.addFilter(filter)
+```
+
+By default, property change filters are initialized with a closure that takes the new and old value.
+If you want to ignore the old value, using `PropertyChangeFilter:ignoringOldValue:ignoreOnFirstPass:`.
 
 #### `onNext()`
 
