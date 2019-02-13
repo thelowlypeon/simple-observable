@@ -139,3 +139,5 @@ Feel free to contribute! Fork the repo and submit a pull request.
 ## TODO
 
 * Bindings! I want to be able to bind a property's value to one of my own. That's kind of the whole point.
+* Better handling of `initialValue`. Specifically, this is problematic when there is no reasonable default
+value when `filter`ing
