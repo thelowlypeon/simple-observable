@@ -1,60 +1,66 @@
+// This playground is meant to demonstrate how SimpleObservable can be useful.
+// It builds a crazy simple app that allows you to change people's names in MVVM.
+
 import UIKit
 import SimpleObservable
 
 class Person {
-    let op_firstName: ObservableProperty<String>
-    let op_lastName: ObservableProperty<String>
+    let _firstName: Property<String>
+    let _middleName: Property<String?>
+    let _lastName: Property<String>
 
     init(firstName: String, lastName: String) {
-        op_firstName = ObservableProperty<String>(firstName)
-        op_lastName = ObservableProperty<String>(lastName)
+        self._firstName = Property<String>(firstName)
+        self._middleName = Property<String?>(nil)
+        self._lastName = Property<String>(lastName)
     }
 
     func isBeatle() -> Bool {
         return ["John", "Paul", "George", "Ringo"].contains(firstName)
     }
 
-    func abbreviateName() {
-        
+    deinit {
+        print("deinitializing \(_firstName.value)")
     }
 }
 
+// prefer simpler setters and getters? just make computed properties that update
+// the observed properties' values. this is by no means necessary! just an idea.
 extension Person {
     var firstName: String {
-        get { return op_firstName.value }
-        set { op_firstName.value = newValue }
+        get { return _firstName.value }
+        set { _firstName.value = newValue }
+    }
+    var middleName: String? {
+        get { return _middleName.value }
+        set { _middleName.value = newValue }
     }
     var lastName: String {
-        get { return op_lastName.value }
-        set { op_lastName.value = newValue }
+        get { return _lastName.value }
+        set { _lastName.value = newValue }
     }
 }
 
 class UserViewModel {
     // MARK - observable properties
-    let op_personNameText = ObservableProperty<String?>()
+    let _personNameText = Property<String?>()
 
     // MARK -- observe changes to the person
-    private let op_person = ObservableProperty<Person?>()
-    private let personObserver: Observer<Person?>
-    private var personFirstNameObserver: Observer<String>?
-    private var personLastNameObserver: Observer<String>?
+    private let _person = Property<Person?>()
+    private var _personListener: Listener<Person?>?
 
     init() {
-        self.personObserver = op_person.observe()
-            .filter { $0?.isBeatle() ?? true }
-        self.personObserver.onNext({(p) in
-            self.personFirstNameObserver = self.person?.op_firstName
-                .observe().onNext { _ in self.updateNameString() }
-            self.personLastNameObserver = self.person?.op_lastName
-                .observe().onNext { _ in self.updateNameString() }
+        _personListener = _person.filter(nil, {(person) in
+            return person?.isBeatle() ?? true // only update if the person is a beatle or nil
+        }).on(next: {[weak self] (person) in
+            guard let self = self else { return }
+            if let person = person {
+                person._firstName.on(next: {[weak self] _ in self?.updateNameString() })
+                person._lastName.on(next: {[weak self] _ in self?.updateNameString() })
+            } else {
+                self.updateNameString()
+            }
         })
-    }
-
-    deinit {
-        personFirstNameObserver = nil
-        personLastNameObserver = nil
-        personObserver.end()
     }
 
     private func updateNameString() {
@@ -64,23 +70,28 @@ class UserViewModel {
             personNameText = nil
         }
     }
+
+    deinit {
+        print("deinitializing UserViewModel")
+        _personListener = nil
+    }
 }
 
 extension UserViewModel {
     var person: Person? {
-        get { return op_person.value }
-        set { op_person.value = newValue }
+        get { return _person.value }
+        set { _person.value = newValue }
     }
     private(set) var personNameText: String? {
-        get { return op_personNameText.value }
-        set { op_personNameText.value = newValue }
+        get { return _personNameText.value }
+        set { _personNameText.value = newValue }
     }
 }
 
 class UserView {
     private var people: [Person]
     private let viewModel: UserViewModel
-    private var personNameTextObserver: Observer<String?>?
+    private var personNameTextObserver: Listener<String?>?
 
     var nameLabel: UILabel!
     var changePersonButton: UIButton!
@@ -106,16 +117,18 @@ class UserView {
     }
 
     func viewWillAppear() {
-        personNameTextObserver = viewModel.op_personNameText.observe()
+        // want to see how important it is to use [weak self] in callbacks like this?
+        // try removing it and see what _doesn't_ get released
+        personNameTextObserver = viewModel._personNameText
             .distinct()
-            .onNext({(text) in
-                self.nameLabel.text = text
-                self.render()
+            .on(next: {[weak self](text) in
+                self?.nameLabel.text = text
+                self?.render()
             })
     }
 
     func viewWillDisappear() {
-        personNameTextObserver = nil
+        personNameTextObserver?.stopObserving()
     }
 
     func chooseRandomPerson() {
@@ -125,14 +138,20 @@ class UserView {
     func render() {
         print("View shows: \(nameLabel.text ?? "nil")")
     }
+
+    deinit { print("deinitializing UserView") }
 }
 
-let view = UserView(people: [])
-view.viewWillAppear()
-view.fetchPeople {
-    print("done fetching people")
-    for _ in 0...10 {
-        print("choosing a random beatle")
-        view.chooseRandomPerson()
+var view: UserView? = UserView(people: [])
+view!.viewWillAppear()
+view!.fetchPeople {
+    for _ in 0...20 {
+        view!.chooseRandomPerson()
     }
+}
+
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) {
+    view!.viewWillDisappear()
+    view = nil
+    print("reference count: \(SimpleObservableReferenceManager.shared.getCount())")
 }

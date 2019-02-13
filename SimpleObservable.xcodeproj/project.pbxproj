@@ -7,18 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D024284422135B1200E50922 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D024284322135B1200E50922 /* Listener.swift */; };
+		D024284622135C2900E50922 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = D024284522135C2900E50922 /* Property.swift */; };
+		D0242850221497C600E50922 /* OnNextListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D024284F221497C600E50922 /* OnNextListener.swift */; };
+		D024285222149D9300E50922 /* MappedListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D024285122149D9300E50922 /* MappedListener.swift */; };
+		D024285422149DDA00E50922 /* DistinctValueListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D024285322149DDA00E50922 /* DistinctValueListener.swift */; };
+		D024285622149E0200E50922 /* FilteredValueListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D024285522149E0200E50922 /* FilteredValueListener.swift */; };
+		D024285822149E2900E50922 /* MutatingListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D024285722149E2900E50922 /* MutatingListener.swift */; };
+		D024285A2214AA5A00E50922 /* MappedListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02428592214AA5A00E50922 /* MappedListenerTests.swift */; };
+		D024285C2214B5DD00E50922 /* ReferenceCounting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D024285B2214B5DD00E50922 /* ReferenceCounting.swift */; };
 		D02FA57921617E3900E59AE3 /* SimpleObservable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D02FA56F21617E3900E59AE3 /* SimpleObservable.framework */; };
 		D02FA58021617E3900E59AE3 /* SimpleObservable.h in Headers */ = {isa = PBXBuildFile; fileRef = D02FA57221617E3900E59AE3 /* SimpleObservable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D02FA58A2161A8C200E59AE3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D02FA5892161A8C200E59AE3 /* README.md */; };
-		D02FA58D2161A92700E59AE3 /* ObservableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA58C2161A92700E59AE3 /* ObservableProperty.swift */; };
-		D02FA58F2161A9B100E59AE3 /* ObservablePropertyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA58E2161A9B100E59AE3 /* ObservablePropertyTest.swift */; };
-		D02FA5922161ABDF00E59AE3 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5912161ABDF00E59AE3 /* Observer.swift */; };
-		D02FA5962161AD0900E59AE3 /* RegisteringObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5952161AD0900E59AE3 /* RegisteringObserverTests.swift */; };
-		D02FA59821623E9400E59AE3 /* ObserverReferenceCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA59721623E9400E59AE3 /* ObserverReferenceCounterTests.swift */; };
-		D02FA59C2162441300E59AE3 /* ObserverCallbacksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA59B2162441300E59AE3 /* ObserverCallbacksTests.swift */; };
-		D02FA5A021624AB300E59AE3 /* DistinctValueObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA59F21624AB300E59AE3 /* DistinctValueObserverTests.swift */; };
-		D02FA5A22168F90800E59AE3 /* ObserverFiltersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5A12168F90800E59AE3 /* ObserverFiltersTests.swift */; };
-		D02FA5A42169415B00E59AE3 /* PropertyChangedFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5A32169415B00E59AE3 /* PropertyChangedFilter.swift */; };
+		D02FA58F2161A9B100E59AE3 /* PropertyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA58E2161A9B100E59AE3 /* PropertyTest.swift */; };
+		D02FA5962161AD0900E59AE3 /* RegisteringListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5952161AD0900E59AE3 /* RegisteringListenerTests.swift */; };
+		D02FA59821623E9400E59AE3 /* ListenerReferenceCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA59721623E9400E59AE3 /* ListenerReferenceCounterTests.swift */; };
+		D02FA59C2162441300E59AE3 /* OnNextListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA59B2162441300E59AE3 /* OnNextListenerTests.swift */; };
+		D02FA5A021624AB300E59AE3 /* DistinctValueListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA59F21624AB300E59AE3 /* DistinctValueListenerTests.swift */; };
+		D02FA5A22168F90800E59AE3 /* FilteredListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FA5A12168F90800E59AE3 /* FilteredListenerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,21 +38,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D024284322135B1200E50922 /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
+		D024284522135C2900E50922 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		D024284F221497C600E50922 /* OnNextListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnNextListener.swift; sourceTree = "<group>"; };
+		D024285122149D9300E50922 /* MappedListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappedListener.swift; sourceTree = "<group>"; };
+		D024285322149DDA00E50922 /* DistinctValueListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistinctValueListener.swift; sourceTree = "<group>"; };
+		D024285522149E0200E50922 /* FilteredValueListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredValueListener.swift; sourceTree = "<group>"; };
+		D024285722149E2900E50922 /* MutatingListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutatingListener.swift; sourceTree = "<group>"; };
+		D02428592214AA5A00E50922 /* MappedListenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappedListenerTests.swift; sourceTree = "<group>"; };
+		D024285B2214B5DD00E50922 /* ReferenceCounting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceCounting.swift; sourceTree = "<group>"; };
 		D02FA56F21617E3900E59AE3 /* SimpleObservable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleObservable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02FA57221617E3900E59AE3 /* SimpleObservable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleObservable.h; sourceTree = "<group>"; };
 		D02FA57321617E3900E59AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D02FA57821617E3900E59AE3 /* SimpleObservableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleObservableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02FA57F21617E3900E59AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D02FA5892161A8C200E59AE3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D02FA58C2161A92700E59AE3 /* ObservableProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableProperty.swift; sourceTree = "<group>"; };
-		D02FA58E2161A9B100E59AE3 /* ObservablePropertyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservablePropertyTest.swift; sourceTree = "<group>"; };
-		D02FA5912161ABDF00E59AE3 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
-		D02FA5952161AD0900E59AE3 /* RegisteringObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteringObserverTests.swift; sourceTree = "<group>"; };
-		D02FA59721623E9400E59AE3 /* ObserverReferenceCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverReferenceCounterTests.swift; sourceTree = "<group>"; };
-		D02FA59B2162441300E59AE3 /* ObserverCallbacksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverCallbacksTests.swift; sourceTree = "<group>"; };
-		D02FA59F21624AB300E59AE3 /* DistinctValueObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistinctValueObserverTests.swift; sourceTree = "<group>"; };
-		D02FA5A12168F90800E59AE3 /* ObserverFiltersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverFiltersTests.swift; sourceTree = "<group>"; };
-		D02FA5A32169415B00E59AE3 /* PropertyChangedFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyChangedFilter.swift; sourceTree = "<group>"; };
+		D02FA58E2161A9B100E59AE3 /* PropertyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyTest.swift; sourceTree = "<group>"; };
+		D02FA5952161AD0900E59AE3 /* RegisteringListenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteringListenerTests.swift; sourceTree = "<group>"; };
+		D02FA59721623E9400E59AE3 /* ListenerReferenceCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerReferenceCounterTests.swift; sourceTree = "<group>"; };
+		D02FA59B2162441300E59AE3 /* OnNextListenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnNextListenerTests.swift; sourceTree = "<group>"; };
+		D02FA59F21624AB300E59AE3 /* DistinctValueListenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistinctValueListenerTests.swift; sourceTree = "<group>"; };
+		D02FA5A12168F90800E59AE3 /* FilteredListenerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredListenerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D024284E2214978000E50922 /* Listeners */ = {
+			isa = PBXGroup;
+			children = (
+				D024284322135B1200E50922 /* Listener.swift */,
+				D024285722149E2900E50922 /* MutatingListener.swift */,
+				D024284F221497C600E50922 /* OnNextListener.swift */,
+				D024285122149D9300E50922 /* MappedListener.swift */,
+				D024285322149DDA00E50922 /* DistinctValueListener.swift */,
+				D024285522149E0200E50922 /* FilteredValueListener.swift */,
+			);
+			path = Listeners;
+			sourceTree = "<group>";
+		};
 		D02FA56521617E3900E59AE3 = {
 			isa = PBXGroup;
 			children = (
@@ -90,11 +115,11 @@
 		D02FA57121617E3900E59AE3 /* SimpleObservable */ = {
 			isa = PBXGroup;
 			children = (
-				D02FA5912161ABDF00E59AE3 /* Observer.swift */,
-				D02FA58C2161A92700E59AE3 /* ObservableProperty.swift */,
-				D02FA5A32169415B00E59AE3 /* PropertyChangedFilter.swift */,
 				D02FA57221617E3900E59AE3 /* SimpleObservable.h */,
 				D02FA57321617E3900E59AE3 /* Info.plist */,
+				D024284E2214978000E50922 /* Listeners */,
+				D024284522135C2900E50922 /* Property.swift */,
+				D024285B2214B5DD00E50922 /* ReferenceCounting.swift */,
 			);
 			path = SimpleObservable;
 			sourceTree = "<group>";
@@ -103,12 +128,13 @@
 			isa = PBXGroup;
 			children = (
 				D02FA57F21617E3900E59AE3 /* Info.plist */,
-				D02FA58E2161A9B100E59AE3 /* ObservablePropertyTest.swift */,
-				D02FA5952161AD0900E59AE3 /* RegisteringObserverTests.swift */,
-				D02FA59721623E9400E59AE3 /* ObserverReferenceCounterTests.swift */,
-				D02FA59B2162441300E59AE3 /* ObserverCallbacksTests.swift */,
-				D02FA59F21624AB300E59AE3 /* DistinctValueObserverTests.swift */,
-				D02FA5A12168F90800E59AE3 /* ObserverFiltersTests.swift */,
+				D02FA58E2161A9B100E59AE3 /* PropertyTest.swift */,
+				D02FA5952161AD0900E59AE3 /* RegisteringListenerTests.swift */,
+				D02FA59721623E9400E59AE3 /* ListenerReferenceCounterTests.swift */,
+				D02FA59B2162441300E59AE3 /* OnNextListenerTests.swift */,
+				D02FA59F21624AB300E59AE3 /* DistinctValueListenerTests.swift */,
+				D02FA5A12168F90800E59AE3 /* FilteredListenerTests.swift */,
+				D02428592214AA5A00E50922 /* MappedListenerTests.swift */,
 			);
 			path = SimpleObservableTests;
 			sourceTree = "<group>";
@@ -223,9 +249,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D02FA58D2161A92700E59AE3 /* ObservableProperty.swift in Sources */,
-				D02FA5922161ABDF00E59AE3 /* Observer.swift in Sources */,
-				D02FA5A42169415B00E59AE3 /* PropertyChangedFilter.swift in Sources */,
+				D024285C2214B5DD00E50922 /* ReferenceCounting.swift in Sources */,
+				D024285222149D9300E50922 /* MappedListener.swift in Sources */,
+				D024285422149DDA00E50922 /* DistinctValueListener.swift in Sources */,
+				D024285622149E0200E50922 /* FilteredValueListener.swift in Sources */,
+				D024284622135C2900E50922 /* Property.swift in Sources */,
+				D024284422135B1200E50922 /* Listener.swift in Sources */,
+				D0242850221497C600E50922 /* OnNextListener.swift in Sources */,
+				D024285822149E2900E50922 /* MutatingListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,12 +264,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D02FA58F2161A9B100E59AE3 /* ObservablePropertyTest.swift in Sources */,
-				D02FA5A021624AB300E59AE3 /* DistinctValueObserverTests.swift in Sources */,
-				D02FA59821623E9400E59AE3 /* ObserverReferenceCounterTests.swift in Sources */,
-				D02FA59C2162441300E59AE3 /* ObserverCallbacksTests.swift in Sources */,
-				D02FA5962161AD0900E59AE3 /* RegisteringObserverTests.swift in Sources */,
-				D02FA5A22168F90800E59AE3 /* ObserverFiltersTests.swift in Sources */,
+				D02FA58F2161A9B100E59AE3 /* PropertyTest.swift in Sources */,
+				D02FA5A021624AB300E59AE3 /* DistinctValueListenerTests.swift in Sources */,
+				D02FA59821623E9400E59AE3 /* ListenerReferenceCounterTests.swift in Sources */,
+				D024285A2214AA5A00E50922 /* MappedListenerTests.swift in Sources */,
+				D02FA59C2162441300E59AE3 /* OnNextListenerTests.swift in Sources */,
+				D02FA5962161AD0900E59AE3 /* RegisteringListenerTests.swift in Sources */,
+				D02FA5A22168F90800E59AE3 /* FilteredListenerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
