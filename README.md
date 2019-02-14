@@ -141,3 +141,5 @@ Feel free to contribute! Fork the repo and submit a pull request.
 * Bindings! I want to be able to bind a property's value to one of my own. That's kind of the whole point.
 * Better handling of `initialValue`. Specifically, this is problematic when there is no reasonable default
 value when `filter`ing
+* Something like a `Command` in ReactiveCocoa, that contains a closure to run when the command is executed, an observable Bool for whether the command is being run at the moment, and an observable `Error?`
+* `combine()` or `flatten()`, that accepts multiple properties and sends either the latest value of each, or maps them based on a closure
